@@ -1,0 +1,47 @@
+[package]
+name = "tems-crypt"
+version = "1.0.0"
+edition = "2021"
+authors = ["Philippe TEMESI <philippe@tems.be>"]
+repository = "https://www.tems.be"
+description = "Tool for encrypting, compressing and hashing files"
+
+[dependencies]
+# Cryptography
+aes-gcm = "0.10"
+chacha20poly1305 = "0.10"
+x25519-dalek = "2.0"
+ed25519-dalek = "2.0"
+argon2 = "0.5"
+blake3 = "1.5"
+sha3 = "0.10"
+sha2 = "0.10"
+rand = "0.8"
+rsa = "0.9"
+pbkdf2 = { version = "0.12", default-features = false, features = ["simple"] }
+
+# Compression
+zstd = "0.13"
+xz2 = "0.1"
+flate2 = "1.0"
+
+# Utilities
+walkdir = "2"
+anyhow = "1"
+thiserror = "1"
+zeroize = "1"
+rpassword = "7"
+chrono = "0.4"
+base64 = "0.22"
+hex = "0.4"
+filetime = "0.2"
+xxhash-rust = { version = "0.8", features = ["xxh3"] }
+
+[profile.release]
+codegen-units = 1
+lto = true
+opt-level = "s"
+panic = "abort"
+split-debuginfo = "packed"
+strip = true
+incremental = true
